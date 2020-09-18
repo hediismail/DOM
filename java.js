@@ -1,11 +1,7 @@
-// bouton +
-let btnplus = document.getElementsByClassName("qt-plus")
-let btnmoin = document.getElementsByClassName("qt-minus")
-let qt = document.getElementsByClassName("qt")
-let price = document.getElementById("full-price")
-let prix = document.getElementsByClassName("prix")
-
-
+// bouton + et moin 
+let btnmoin = document.querySelectorAll(".qt-minus")
+let qt = document.querySelectorAll(".qt")
+let btnplus = document.querySelectorAll(".qt-plus")
 
 for (let i = 0; i < btnplus.length; i++) {
 
@@ -13,7 +9,7 @@ for (let i = 0; i < btnplus.length; i++) {
 
     btnplus[i].addEventListener("click", function () {
         qt[i].innerHTML = Number(qt[i].innerHTML) + 1
-        price.innerHTML = Number(prix[i].innerHTML) + Number(price.innerHTML)
+         price.innerHTML = Number(prix[i].innerHTML) + Number(price.innerHTML)
 
     })
 
@@ -21,7 +17,7 @@ for (let i = 0; i < btnplus.length; i++) {
 
         if (qt[i].innerHTML > 0) {
             qt[i].innerHTML = Number(qt[i].innerHTML) - 1
-            price.innerHTML = Number(price.innerHTML) - Number(prix[i].innerHTML)
+             price.innerHTML = Number(price.innerHTML) - Number(prix[i].innerHTML)
         }
         else {
             qt[i].innerHTML = 0
@@ -29,20 +25,37 @@ for (let i = 0; i < btnplus.length; i++) {
     })
 }
 
-let heart = document.getElementsByClassName("heart")
-for (let i = 0; i < heart.length; i++) {
 
-    heart[i].addEventListener("click", function () {
+// like dislike
+let heart = document.querySelectorAll(".heart")
 
-        if (heart[i].style.color == "white") {
-            heart[i].style.color = "red"
+for (let q = 0; q< heart.length; q++) {
+    heart[q].style.color = "pink"
+    heart[q].addEventListener("click", function () {
+
+        if (heart[q].style.color == "pink") {
+            heart[q].style.color = "red"
         }
         else {
-            heart[i].style.color = "white"
+            heart[q].style.color = "pink"
         }
 
     })
 }
+// remove button
+let remove = document.querySelectorAll(".fas")
 
+for (let i = 0; i < remove.length; i++) {
 
+    remove[i].addEventListener("click", function () {
+        remove[i].parentElement.parentElement.remove()
+        let x =Number(prix[i].innerHTML)*Number(qt[i].innerHTML)
+price.innerHTML= Number(price.innerHTML) - Number(x) 
+    })
+}
+
+//total
+
+let price = document.querySelector("#full-price")
+let prix = document.querySelectorAll(".prix")
 
